@@ -1,8 +1,6 @@
 const fs = require('fs');
 const dataFile = './data/notes-data.json';
 
-console.log('Starting notes.js...');
-
 let fetchNotes = () => {
   try {
     let notesString = fs.readFileSync(dataFile);
@@ -35,20 +33,34 @@ let addNote = (title, body) => {
 // end addNote definition
 
 let getAll = () => {
-  console.log('Getting all notes');
+  //console.log('Getting all notes');
+  return fetchNotes();
 };
 
 let getNote = (title) => {
-  console.log('Getting note', title);
+  let notes = fetchNotes();
+  let filteredNotes = notes.filter((note) => note.title === title);
+  return filteredNotes[0];
 };
 
 let removeNote = (title) => {
-  console.log('Removing note', title);
+  let notes = fetchNotes();
+  let filteredNotes = notes.filter((note) => note.title !== title);
+  saveNotes(filteredNotes);
+  return notes.length !== filteredNotes.length;
+};
+
+let logNote = (note) => {
+  debugger;
+  console.log(' --- ');
+	console.log(`Title: ${note.title}`);
+	console.log(`Body: ${note.body}`);
 };
 
 module.exports = {
   addNote,            // the same like - addNote: addNote, when the variable (value) name is equal to property name 
   getAll,
   getNote,
-  removeNote
+  removeNote,
+  logNote
 };
