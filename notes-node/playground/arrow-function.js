@@ -33,5 +33,5 @@ let user = {
   }
 };
 
-user.sayHi();
+user.sayHi(1, 2, 3);
 user.sayHiAlt(1, 2, 3);
