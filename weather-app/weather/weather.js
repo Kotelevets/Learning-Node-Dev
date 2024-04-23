@@ -1,22 +1,11 @@
 const request = require('request');
-const fs = require('fs');
-
-const fileAuthPath = './weather/auth.json';
-
-let getAuthObject = (filePath) => {
-  let authJSON = "";
-  try {
-    authJSON = fs.readFileSync(filePath);
-  } catch(e) {};
-  let authObject = JSON.parse(authJSON);
-  return authObject;
-};
+const auth = require('../auth/auth.js');
 
 let currentDate = new Date().toISOString();
 
 let getWeather = (lat, lng, callback) => {
   request({
-    auth: getAuthObject(fileAuthPath),
+    auth: auth.getAuthObject(),
     url: `https://api.meteomatics.com/${currentDate}/t_2m:C/${lat},${lng}/json?model=mix`,
     json: true
     }, 
