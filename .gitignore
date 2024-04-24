@@ -6,3 +6,5 @@ weather-app/auth/*.json
 node-web-server/node_modules/*
 node-web-server/package-lock.json
 node-web-server/server.log
+node-web-server/.git
+node-web-server/.gitignore
