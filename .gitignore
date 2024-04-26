@@ -8,3 +8,5 @@ node-web-server/package-lock.json
 node-web-server/server.log
 node-web-server/.git
 node-web-server/.gitignore
+node-tests/node_modules/*
+node-tests/package-lock.json
